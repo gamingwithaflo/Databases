@@ -71,7 +71,6 @@ director_id INTEGER NOT NULL,
 release_date DATE NOT NULL,
 budget INTEGER,
 is_airing BOOLEAN DEFAULT FALSE,
-no_episodes INTEGER NOT NULL,
 title VARCHAR NOT NULL,
 studio VARCHAR NOT NULL,
 
@@ -83,10 +82,10 @@ FOREIGN KEY (director_id) REFERENCES anime(director_id)
 
 CREATE TABLE IF NOT EXISTS episode (
 number INTEGER NOT NULL,
-anime_id INTEGER NOT NULL,
+project_id INTEGER NOT NULL,
 length INTEGER NOT NULL,
 
-FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
+FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -156,30 +155,14 @@ CREATE TABLE IF NOT EXISTS voiced_by (
 char_id INTEGER NOT NULL,
 va_id INTEGER NOT NULL,
 
-FOREIGN KEY (char_id) REFERENCES character(char_id)
+FOREIGN KEY (char_id) REFERENCES character(char_id),
 FOREIGN KEY (va_id) REFERENCES voice_actor(va_id)
 );
 
+CREATE TABLE IF NOT EXISTS watches (
+consumer_id INTEGER NOT NULL,
+project_id INTEGER NOT NULL,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+FOREIGN KEY (consumer_id) REFERENCES consumer(consumer_id),
+FOREIGN KEY (project_id) REFERENCES project(project_id)
+);
