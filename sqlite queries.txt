@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS character (
 char_id INTEGER NOT NULL,
 anime_id INTEGER NOT NULL,
 name VARCHAR NOT NULL,
-age INTEGER NOT NULL,
+age INTEGER,
 gender CHARACTER(1),
 image VARCHAR,
 is_main BOOLEAN DEFAULT FALSE,
@@ -93,7 +93,7 @@ FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 
 CREATE TABLE IF NOT EXISTS source (
 source_id INTEGER NOT NULL,
-anime_id INTEGER NOT NULL,
+anime_id INTEGER,
 type VARCHAR NOT NULL,
 release_date DATE NOT NULL,
 is_releasing BOOLEAN DEFAULT FALSE,
