@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS human (
-bsn INTEGER NOT NULL PRIMARY KEY,
+ssno INTEGER NOT NULL PRIMARY KEY,
 name VARCHAR NOT NULL,
 birthdate DATE NOT NULL,
 gender CHARACTER(1) NOT NULL
@@ -15,42 +15,42 @@ name VARCHAR NOT NULL PRIMARY KEY
 
 CREATE TABLE IF NOT EXISTS author (
 author_id INTEGER NOT NULL PRIMARY KEY,
+ssno INTEGER NOT NULL,
 alias VARCHAR,
 is_active BOOLEAN NOT NULL,
-bsn INTEGER NOT NULL,
 
-FOREIGN KEY (bsn) REFERENCES human(bsn)
+FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS director (
 director_id INTEGER NOT NULL PRIMARY KEY,
+ssno INTEGER NOT NULL,
 description VARCHAR NOT NULL,
 is_active BOOLEAN NOT NULL,
-bsn INTEGER NOT NULL,
 
-FOREIGN KEY (bsn) REFERENCES human(bsn)
+FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS consumer (
 consumer_id INTEGER NOT NULL PRIMARY KEY,
+ssno INTEGER NOT NULL,
 nickname VARCHAR NOT NULL,
-bsn INTEGER NOT NULL,
 
-FOREIGN KEY (bsn) REFERENCES human(bsn)
+FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS voice_actor (
 va_id INTEGER NOT NULL PRIMARY KEY,
+ssno INTEGER NOT NULL,
 description VARCHAR NOT NULL,
-bsn INTEGER NOT NULL,
 
-FOREIGN KEY (bsn) REFERENCES human(bsn)
+FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
