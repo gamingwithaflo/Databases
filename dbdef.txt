@@ -14,8 +14,7 @@ name VARCHAR NOT NULL PRIMARY KEY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS author (
-author_id INTEGER NOT NULL PRIMARY KEY,
-ssno INTEGER NOT NULL,
+ssno INTEGER NOT NULL PRIMARY KEY,
 alias VARCHAR,
 is_active BOOLEAN NOT NULL,
 
@@ -25,8 +24,7 @@ FOREIGN KEY (ssno) REFERENCES human(ssno)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS director (
-director_id INTEGER NOT NULL PRIMARY KEY,
-ssno INTEGER NOT NULL,
+ssno INTEGER NOT NULL PRIMARY KEY,
 description VARCHAR NOT NULL,
 is_active BOOLEAN NOT NULL,
 
@@ -36,8 +34,7 @@ FOREIGN KEY (ssno) REFERENCES human(ssno)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS consumer (
-consumer_id INTEGER NOT NULL PRIMARY KEY,
-ssno INTEGER NOT NULL,
+ssno INTEGER NOT NULL PRIMARY KEY,
 nickname VARCHAR NOT NULL,
 
 FOREIGN KEY (ssno) REFERENCES human(ssno)
@@ -46,8 +43,7 @@ FOREIGN KEY (ssno) REFERENCES human(ssno)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS voice_actor (
-va_id INTEGER NOT NULL PRIMARY KEY,
-ssno INTEGER NOT NULL,
+ssno INTEGER NOT NULL PRIMARY KEY,
 description VARCHAR NOT NULL,
 
 FOREIGN KEY (ssno) REFERENCES human(ssno)
@@ -55,9 +51,21 @@ FOREIGN KEY (ssno) REFERENCES human(ssno)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+CREATE TABLE IF NOT EXISTS source (
+source_id INTEGER NOT NULL PRIMARY KEY,
+type VARCHAR NOT NULL,
+release_date DATE NOT NULL,
+is_releasing BOOLEAN NOT NULL
+);
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 CREATE TABLE IF NOT EXISTS anime (
 anime_id INTEGER NOT NULL PRIMARY KEY,
-title VARCHAR NOT NULL
+source_id INTEGER,
+title VARCHAR NOT NULL,
+
+FOREIGN KEY (source_id) REFERENCES source(source_id)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,7 +87,7 @@ FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 CREATE TABLE IF NOT EXISTS project (
 project_id INTEGER NOT NULL PRIMARY KEY,
 anime_id INTEGER NOT NULL,
-director_id INTEGER NOT NULL,
+ssno INTEGER NOT NULL,
 release_date DATE NOT NULL,
 budget INTEGER,
 is_airing BOOLEAN NOT NULL,
@@ -87,7 +95,7 @@ title VARCHAR NOT NULL,
 studio VARCHAR NOT NULL,
 
 FOREIGN KEY (anime_id) REFERENCES anime(anime_id),
-FOREIGN KEY (director_id) REFERENCES anime(director_id)
+FOREIGN KEY (ssno) REFERENCES director(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -99,18 +107,6 @@ length INTEGER NOT NULL,
 
 PRIMARY KEY(number,project_id),
 FOREIGN KEY (project_id) REFERENCES project(project_id)
-);
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-CREATE TABLE IF NOT EXISTS source (
-source_id INTEGER NOT NULL PRIMARY KEY,
-anime_id INTEGER,
-type VARCHAR NOT NULL,
-release_date DATE NOT NULL,
-is_releasing BOOLEAN NOT NULL,
-
-FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -136,22 +132,22 @@ FOREIGN KEY (project_id) REFERENCES project(project_id)
 
 CREATE TABLE IF NOT EXISTS written_by (
 source_id INTEGER NOT NULL,
-author_id INTEGER NOT NULL,
+ssno INTEGER NOT NULL,
 
-PRIMARY KEY(source_id,author_id),
+PRIMARY KEY(source_id, ssno),
 FOREIGN KEY (source_id) REFERENCES source(source_id),
-FOREIGN KEY (author_id) REFERENCES author(author_id)
+FOREIGN KEY (ssno) REFERENCES author(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS sung_by (
 song_id INTEGER NOT NULL,
-va_id INTEGER NOT NULL,
+ssno INTEGER NOT NULL,
 
-PRIMARY KEY(song_id, va_id),
+PRIMARY KEY(song_id, ssno),
 FOREIGN KEY (song_id) REFERENCES song(song_id),
-FOREIGN KEY (va_id) REFERENCES voice_actor(va_id)
+FOREIGN KEY (ssno) REFERENCES voice_actor(ssno)
 );
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -169,18 +165,18 @@ FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 
 CREATE TABLE IF NOT EXISTS voiced_by (
 char_id INTEGER NOT NULL,
-va_id INTEGER NOT NULL,
+ssno INTEGER NOT NULL,
 
-PRIMARY KEY(char_id, va_id),
+PRIMARY KEY(char_id, ssno),
 FOREIGN KEY (char_id) REFERENCES character(char_id),
-FOREIGN KEY (va_id) REFERENCES voice_actor(va_id)
+FOREIGN KEY (ssno) REFERENCES voice_actor(ssno)
 );
 
 CREATE TABLE IF NOT EXISTS watches (
-consumer_id INTEGER NOT NULL,
+ssno INTEGER NOT NULL,
 project_id INTEGER NOT NULL,
 
-PRIMARY KEY(consumer_id, project_id),
-FOREIGN KEY (consumer_id) REFERENCES consumer(consumer_id),
+PRIMARY KEY(ssno, project_id),
+FOREIGN KEY (ssno) REFERENCES consumer(ssno),
 FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
