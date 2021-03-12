@@ -5,13 +5,9 @@ birthdate DATE NOT NULL,
 gender CHARACTER(1) NOT NULL
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS genre (
 name VARCHAR NOT NULL PRIMARY KEY
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS author (
 ssno INTEGER NOT NULL PRIMARY KEY,
@@ -21,8 +17,6 @@ is_active BOOLEAN NOT NULL,
 FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS director (
 ssno INTEGER NOT NULL PRIMARY KEY,
 description VARCHAR NOT NULL,
@@ -31,16 +25,12 @@ is_active BOOLEAN NOT NULL,
 FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS consumer (
 ssno INTEGER NOT NULL PRIMARY KEY,
 nickname VARCHAR NOT NULL,
 
 FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS voice_actor (
 ssno INTEGER NOT NULL PRIMARY KEY,
@@ -49,16 +39,12 @@ description VARCHAR NOT NULL,
 FOREIGN KEY (ssno) REFERENCES human(ssno)
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS source (
 source_id INTEGER NOT NULL PRIMARY KEY,
 type VARCHAR NOT NULL,
 release_date DATE NOT NULL,
 is_releasing BOOLEAN NOT NULL
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS anime (
 anime_id INTEGER NOT NULL PRIMARY KEY,
@@ -67,8 +53,6 @@ title VARCHAR NOT NULL,
 
 FOREIGN KEY (source_id) REFERENCES source(source_id)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS character (
 char_id INTEGER NOT NULL PRIMARY KEY,
@@ -81,8 +65,6 @@ is_main BOOLEAN NOT NULL,
 
 FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS project (
 project_id INTEGER NOT NULL PRIMARY KEY,
@@ -98,8 +80,6 @@ FOREIGN KEY (anime_id) REFERENCES anime(anime_id),
 FOREIGN KEY (ssno) REFERENCES director(ssno)
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS episode (
 number INTEGER NOT NULL,
 project_id INTEGER NOT NULL,
@@ -108,8 +88,6 @@ length INTEGER NOT NULL,
 PRIMARY KEY(number,project_id),
 FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS song (
 song_id INTEGER NOT NULL PRIMARY KEY,
@@ -121,15 +99,6 @@ title VARCHAR NOT NULL,
 FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
 CREATE TABLE IF NOT EXISTS written_by (
 source_id INTEGER NOT NULL,
 ssno INTEGER NOT NULL,
@@ -138,8 +107,6 @@ PRIMARY KEY(source_id, ssno),
 FOREIGN KEY (source_id) REFERENCES source(source_id),
 FOREIGN KEY (ssno) REFERENCES author(ssno)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS sung_by (
 song_id INTEGER NOT NULL,
@@ -150,8 +117,6 @@ FOREIGN KEY (song_id) REFERENCES song(song_id),
 FOREIGN KEY (ssno) REFERENCES voice_actor(ssno)
 );
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CREATE TABLE IF NOT EXISTS categorized_in (
 anime_id INTEGER NOT NULL,
 genre_name VARCHAR NOT NULL,
@@ -160,8 +125,6 @@ PRIMARY KEY(anime_id, genre_name),
 FOREIGN KEY (genre_name) REFERENCES genre(name),
 FOREIGN KEY (anime_id) REFERENCES anime(anime_id)
 );
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 CREATE TABLE IF NOT EXISTS voiced_by (
 char_id INTEGER NOT NULL,
