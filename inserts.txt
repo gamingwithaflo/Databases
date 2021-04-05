@@ -1,0 +1,49 @@
+insert into human values (10001, 'Jaylan Lee', '2003-09-29', 'M');
+insert into human values (10002, 'Hajime Isayama', '1986-08-29', 'M');
+insert into human values (10003, 'Hayao Miyazaki', '1941-01-05', 'M');
+insert into human values (10004, 'Hiroshi Kamiya', '1975-01-28', 'M');
+insert into human values (10005, 'Tetsuro Araki', '1976-11-05', 'M');
+insert into human values (10006, 'Hiroyuki Sawano', '1980-09-12', 'M');
+
+insert into genre values ('Shounen');
+
+insert into author values (10002, null, true);
+
+insert into director values (10003, 'Hayao Miyazaki is a Japanese animator, director, producer, screenwriter, author, and manga artist.', true);
+
+insert into consumer values (10001, 'djeelun');
+
+insert into voice_actor values (10004, 'Hiroshi Kamiya is a Japanese voice actor, singer and narrator affiliated with Aoni Production.');
+
+insert into source values (20001, 'Manga', '2010-03-17', true);
+
+insert into anime values (30001, 20001, 'Shingeki no Kyojin');
+
+insert into character values (40001, 30001, 'Levi Ackerman', null, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
+
+insert into project values (50001, 30001, 10005, '2013-04-07', null, false, 'Shingeki no Kyojin', 'Wit studio');
+
+insert into episode values (1, 50001, 1540);
+
+insert into song values (60001, 50001, 381, 'OST', 'Vogel im Kafig');
+
+insert into written_by values (20001, 10002);
+
+insert into sung_by values (60001, 10006);
+
+insert into categorized_in values (30001, 'Shounen');
+
+insert into voiced_by values (40001, 10004);
+
+insert into watches values (10001, 50001);
+
+
+
+
+
+
+
+
+
+
+
