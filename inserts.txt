@@ -4,6 +4,7 @@ insert into human values (10003, 'Hayao Miyazaki', '1941-01-05', 'M');
 insert into human values (10004, 'Hiroshi Kamiya', '1975-01-28', 'M');
 insert into human values (10005, 'Tetsuro Araki', '1976-11-05', 'M');
 insert into human values (10006, 'Hiroyuki Sawano', '1980-09-12', 'M');
+insert into human values (10007, 'Floris van der Hout', '2002-02-24', 'M');
 
 insert into genre values ('Shounen');
 
@@ -12,6 +13,7 @@ insert into author values (10002, null, true);
 insert into director values (10003, 'Hayao Miyazaki is a Japanese animator, director, producer, screenwriter, author, and manga artist.', true);
 
 insert into consumer values (10001, 'djeelun');
+insert into consumer values (10007, 'gamingwithaflo');
 
 insert into voice_actor values (10004, 'Hiroshi Kamiya is a Japanese voice actor, singer and narrator affiliated with Aoni Production.');
 
@@ -24,6 +26,7 @@ insert into character values (40002, 30001, 'Jaylan Lee', 17, 'M', 'https://i.re
 insert into character values (40003, 30001, 'Floris van der Hout', 18, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
 
 insert into project values (50001, 30001, 10005, '2013-04-07', null, false, 'Shingeki no Kyojin', 'Wit studio');
+insert into project values (50002, 30001, 10005, '2017-04-01', null, false, 'Shingeki no Kyojin Season 2', 'Wit studio');
 
 insert into episode values (1, 50001, 1540);
 
@@ -38,6 +41,8 @@ insert into categorized_in values (30001, 'Shounen');
 insert into voiced_by values (40001, 10004);
 
 insert into watches values (10001, 50001);
+insert into watches values (10001, 50002);
+insert into watches values (10007, 50001);
 
 
 
