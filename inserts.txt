@@ -20,6 +20,8 @@ insert into source values (20001, 'Manga', '2010-03-17', true);
 insert into anime values (30001, 20001, 'Shingeki no Kyojin');
 
 insert into character values (40001, 30001, 'Levi Ackerman', null, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
+insert into character values (40002, 30001, 'Jaylan Lee', 17, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
+insert into character values (40003, 30001, 'Floris van der Hout', 18, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
 
 insert into project values (50001, 30001, 10005, '2013-04-07', null, false, 'Shingeki no Kyojin', 'Wit studio');
 
