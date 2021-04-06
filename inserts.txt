@@ -9,7 +9,6 @@ insert into human values (10008, 'Yu Kobayashi', '1982-02-05', 'F');
 insert into human values (10009, 'Shin Wakabayashi', '1900-01-01', 'M');
 
 insert into genre values ('Shounen');
-insert into genre values ('Slice of life');
 insert into genre values ('Romance');
 insert into genre values ('Comedy');
 insert into genre values ('Psychological');
@@ -85,12 +84,9 @@ insert into sung_by values (60001, 10006);
 insert into categorized_in values (30001, 'Shounen');
 insert into categorized_in values (30002, 'Psychological');
 insert into categorized_in values (30002, 'Drama');
-insert into categorized_in values (30003, 'Slice of life');
 insert into categorized_in values (30003, 'Comedy');
-insert into categorized_in values (30004, 'Slice of life');
 insert into categorized_in values (30004, 'Comedy');
 insert into categorized_in values (30004, 'Romance');
-insert into categorized_in values (30005, 'Slice of life');
 insert into categorized_in values (30005, 'Comedy');
 
 insert into voiced_by values (40001, 10004);
