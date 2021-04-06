@@ -90,7 +90,7 @@ insert into categorized_in values (30003, 'Comedy');
 insert into categorized_in values (30004, 'Slice of life');
 insert into categorized_in values (30004, 'Comedy');
 insert into categorized_in values (30004, 'Romance');
-insert into categorized_in values (30005, 'Slice of Life');
+insert into categorized_in values (30005, 'Slice of life');
 insert into categorized_in values (30005, 'Comedy');
 
 insert into voiced_by values (40001, 10004);
