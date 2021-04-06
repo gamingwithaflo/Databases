@@ -5,12 +5,20 @@ insert into human values (10004, 'Hiroshi Kamiya', '1975-01-28', 'M');
 insert into human values (10005, 'Tetsuro Araki', '1976-11-05', 'M');
 insert into human values (10006, 'Hiroyuki Sawano', '1980-09-12', 'M');
 insert into human values (10007, 'Floris van der Hout', '2002-02-24', 'M');
+insert into human values (10008, 'Yu Kobayashi', '1982-02-05', 'F');
+insert into human values (10009, 'Shin Wakabayashi', '1900-01-01', 'M');
 
 insert into genre values ('Shounen');
+insert into genre values ('Slice of life');
+insert into genre values ('Romance');
+insert into genre values ('Comedy');
+insert into genre values ('Psychological');
+insert into genre values ('Drama');
 
 insert into author values (10002, null, true);
 
 insert into director values (10003, 'Hayao Miyazaki is a Japanese animator, director, producer, screenwriter, author, and manga artist.', true);
+insert into director values (10009, 'No biography available', true);
 
 insert into consumer values (10001, 'djeelun');
 insert into consumer values (10007, 'gamingwithaflo');
@@ -18,17 +26,47 @@ insert into consumer values (10007, 'gamingwithaflo');
 insert into voice_actor values (10004, 'Hiroshi Kamiya is a Japanese voice actor, singer and narrator affiliated with Aoni Production.');
 
 insert into source values (20001, 'Manga', '2010-03-17', true);
+insert into source values (20002, 'Manga', '2006-12-12', false);
+insert into source values (20003, 'Manga', '2012-03-27', true);
+insert into source values (20004, 'Light novel', '2007-03-24', false);
 
 insert into anime values (30001, 20001, 'Shingeki no Kyojin');
+insert into anime values (30002, null, 'Wonder Egg Priority');
+insert into anime values (30003, 20002, 'Nichijou');
+insert into anime values (30004, 20003, 'Horimiya');
+insert into anime values (30005, 20004, 'Lucky star');
 
 insert into character values (40001, 30001, 'Levi Ackerman', null, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
-insert into character values (40002, 30001, 'Jaylan Lee', 17, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
-insert into character values (40003, 30001, 'Floris van der Hout', 18, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
+insert into character values (40002, 30001, 'Sasha Blouse', null, 'F', 'https://i.redd.it/t6arncqye5a61.png', false);
+insert into character values (40003, 30001, 'Eren Yeager', 19, 'M', 'https://i.redd.it/t6arncqye5a61.png', true);
+insert into character values (40004, 30001, 'Mikasa Ackerman', 19, 'F', 'https://i.redd.it/t6arncqye5a61.png', true);
+insert into character values (40005, 30002, 'Ai Ohto', 14, 'F', 'https://i.redd.it/t6arncqye5a61.png', true);
+insert into character values (40006, 30002, 'Neiru Aonuma', 14, 'F', 'https://i.redd.it/t6arncqye5a61.png', true);
+insert into character values (40007, 30002, 'Acca', null, 'M', 'https://i.redd.it/t6arncqye5a61.png', false);
+insert into character values (40008, 30002, 'Momoe Sawaki', 14, 'F', 'https://i.redd.it/t6arncqye5a61.png', true);
+
 
 insert into project values (50001, 30001, 10005, '2013-04-07', null, false, 'Shingeki no Kyojin', 'Wit studio');
 insert into project values (50002, 30001, 10005, '2017-04-01', null, false, 'Shingeki no Kyojin Season 2', 'Wit studio');
+insert into project values (50003, 30002, 10009, '2021-01-13', null, false, 'Wonder Egg Priority', 'CloverWorks');
 
 insert into episode values (1, 50001, 1540);
+insert into episode values (2, 50001, 1449);
+insert into episode values (3, 50001, 1449);
+insert into episode values (4, 50001, 1449);
+insert into episode values (5, 50001, 1447);
+
+insert into episode values (1, 50002, 1450);
+insert into episode values (2, 50002, 1450);
+insert into episode values (3, 50002, 1450);
+insert into episode values (4, 50002, 1450);
+insert into episode values (5, 50002, 1450);
+
+insert into episode values (1, 50003, 1382);
+insert into episode values (2, 50003, 1382);
+insert into episode values (3, 50003, 1382);
+insert into episode values (4, 50003, 1382);
+insert into episode values (5, 50003, 1382);
 
 insert into song values (60001, 50001, 381, 'OST', 'Vogel im Kafig');
 
@@ -37,8 +75,18 @@ insert into written_by values (20001, 10002);
 insert into sung_by values (60001, 10006);
 
 insert into categorized_in values (30001, 'Shounen');
+insert into categorized_in values (30002, 'Psychological');
+insert into categorized_in values (30002, 'Drama');
+insert into categorized_in values (30003, 'Slice of life');
+insert into categorized_in values (30003, 'Comedy');
+insert into categorized_in values (30004, 'Slice of life');
+insert into categorized_in values (30004, 'Comedy');
+insert into categorized_in values (30004, 'Romance');
+insert into categorized_in values (30005, 'Slice of Life');
+insert into categorized_in values (30005, 'Comedy');
 
 insert into voiced_by values (40001, 10004);
+insert into voiced_by values (40002, 10008);
 
 insert into watches values (10001, 50001);
 insert into watches values (10001, 50002);
