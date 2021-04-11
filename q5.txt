@@ -1,0 +1,19 @@
+/*This query returns the project id of the longest project (in minutes) of Shingeki no Kyojin.*/
+
+SELECT
+   project_id,
+   title,
+   MAX(sumEpisode)
+FROM
+   (SELECT P.project_id, title, SUM(length) sumEpisode
+        FROM (
+                SELECT project_id, project.title
+                 FROM 
+                     anime, 
+                     project
+                 WHERE
+                 project.anime_id = anime.anime_id AND anime.title = "Shingeki no Kyojin"
+            ) P
+        JOIN episode E ON E.project_id = P.project_id
+        GROUP BY P.project_id)
+;

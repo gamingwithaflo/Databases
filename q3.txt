@@ -1,0 +1,6 @@
+--Select all anime titles which have exclusively the genre comedy.
+
+SELECT CatAn.title 
+FROM (anime
+JOIN categorized_in ON anime.anime_id =  categorized_in.anime_id) AS CatAn
+GROUP BY CatAn.anime_id HAVING count(CatAn.anime_id) = 1 AND CatAn.genre_name = "Comedy";

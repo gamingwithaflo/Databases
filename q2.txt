@@ -1,0 +1,10 @@
+--Select all characters which have no voice actors
+
+SELECT 
+   characterList.name
+FROM 
+   (SELECT character.name,character.char_id, voiced_by.char_id charID 
+   FROM character
+    LEFT JOIN voiced_by ON voiced_by.char_id = character.char_id) characterList
+WHERE characterList.charID IS NULL;
+

@@ -1,0 +1,16 @@
+--This query returns the name and char_id of the second oldest main character of the "Nichijou" anime.
+
+SELECT
+  name,
+  char_id,
+  MAX(age) AS age
+FROM character C
+JOIN anime A ON C.anime_id = A.anime_id
+WHERE 
+  age < (
+    SELECT MAX(age) 
+    FROM character 
+    JOIN anime ON character.anime_id = anime.anime_id
+    WHERE is_main AND title = "Nichijou") 
+  AND is_main
+  AND title = "Nichijou";

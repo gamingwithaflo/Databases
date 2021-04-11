@@ -1,0 +1,20 @@
+--Give all the ssno’s of the consumers that have watched all projects of the "Shingeki no Kyojin" anime.
+
+
+SELECT ssno
+FROM watches AS W1
+WHERE NOT EXISTS (
+   SELECT * FROM (
+      SELECT project_id
+      FROM 
+         anime, 
+         project
+      WHERE
+         project.anime_id = anime.anime_id AND anime.title = "Shingeki no Kyojin"
+   ) snk_projects
+   WHERE NOT EXISTS (
+      SELECT * FROM watches AS W2
+      WHERE (W1.ssno = W2.ssno) AND (W2.project_id = snk_projects.project_id)
+   )
+)
+GROUP BY ssno;

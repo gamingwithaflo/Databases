@@ -1,0 +1,5 @@
+--give a list of all the anime titles and the corresponding type of source they are based on (null if the anime is not based on a source).
+
+SELECT anime.title, source.type
+FROM anime
+LEFT JOIN source ON anime.source_id = source.source_id;
